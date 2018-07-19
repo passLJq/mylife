@@ -1,0 +1,189 @@
+  body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, table, th, td {margin:0; padding:0;}
+  ul li {
+    list-style: none;
+  }
+  .main {
+  position: relative;
+
+  overflow: hidden;
+
+  min-width: 844px;
+  min-height: 100vh;
+  padding: 70px 5px 20px 185px;
+  }
+  .main .navbar {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  left: 180px;
+
+  padding: 0 15px 0 10px;
+
+  border: 0;
+  border-bottom: 1px solid #eee;
+  border-radius: 0;
+  background-color: #fff;
+  }
+  .main .navbar .navbar-btn {
+  padding: 10px 12px;
+
+  color: #444;
+  border: 0;
+}
+.main .navbar i {
+  margin-right: 4px;
+  font-size: .8em;
+}
+#jl {
+  background-color: #ff6054;
+  border: 0;
+}
+.aside {
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 100%;
+  background-color: #ff6054;
+}
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, .3);
+}
+.aside .profile h3 {
+  color: #fff;
+  font-family: Microsoft yahei;
+}
+.aside .profile {
+  padding: 25px;
+  text-align: center;
+  background-color: #d7493e;
+}
+.aside .nav .active > a {
+  color: #f6f6f6;
+  background-color: #d7493e;
+}
+
+.aside .nav {
+  padding: 10px 0;
+}
+.aside .nav li + li {
+  margin-top: 0;
+  /*text-align: center;*/
+}
+.aside .nav ul {
+  background-color: #d7493e;
+}
+.aside .nav a {
+  display: block;
+
+  padding: 10px 20px;
+
+  color: #dee2ec;
+}
+.aside .nav .active > a {
+  color: #fff;
+  background-color: #d7493e;
+}
+.collapse {
+  /*padding-left: 0;*/
+  color: #ced3e0;
+}
+.collapse li :hover{
+  background-color: #d7493e;
+}
+.aside .nav .fa-angle-right {
+  float: right;
+
+  transition: transform .2s;
+  transform: rotate(90deg);
+
+  font-size: 16px;
+  line-height: 20px;
+}
+.aside .nav .collapsed .fa-angle-right {
+  float: right;
+
+  transform: rotate(0);
+}
+.aside .nav a i:first-child{
+  width: 14px;
+  margin-right: 10px;
+  font-size: 14px;
+  line-height: 16px; 
+}
+.aside .nav a:hover,
+.aside .nav a:focus {
+  color: #f6f6f6;
+  background-color: #d7493e;
+}
+.main .container-fluid .page-title h1 {
+  font-size: 24px;
+}
+.main .container-fluid form h2 {
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 17px;
+  font-weight: 400;
+}
+.main .container-fluid form label {
+  font-weight:500;
+}
+.row .col-md-8 table {
+  margin-top: 30px;
+}
+.main .container-fluid .page-action {
+  overflow: hidden;
+
+  margin-bottom: 10px;
+}
+.main .container-fluid .page-action .btn-batch,
+.main .container-fluid .page-action .form-inline {
+  display: inline-block;
+}
+
+.main .container-fluid .page-action .btn {
+  margin-right: 10px;
+}
+
+.login {
+  position: fixed;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: #d7493e;
+}
+
+.login .login-wrap {
+  position: relative;
+
+  max-width: 380px;
+  margin: 180px auto;
+  padding: 100px 40px 40px;
+
+  border-radius: 4px;
+  background-color: #fff;
+}
+.login .login-wrap .btn {
+  border:0;
+  background-color: #d7493e;
+}
+.login .login-wrap .avatar {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  overflow: hidden;
+  width: 140px;
+  height: 140px;
+  margin-left: -70px;
+  border: 10px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 5px #ccc;
+}
+.main .container-fluid .form-horizontal {
+  margin-top: 50px;
+}
