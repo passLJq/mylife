@@ -1,9 +1,15 @@
-<?php echo $_SERVER['PHP_SELF']; ?>
-<?php $current_page = empty($current_page)? '' : $current_page; ?>
+<?php 
+
+$current_page = empty($current_page)? '' : $current_page; 
+
+require_once MY_DIR . '\function.php';
+$current_user = my_current_user();
+
+?>
 <div class="aside">
     <div class="profile">
-      <img src="../static/uploads/avatar.jpg" class="avatar">
-      <h3 class="name">潘达</h3>
+      <img src="<?php echo isset($current_user)?$current_user['avatar']:'../../static/uploads/avatar_2.jpg' ?>" class="avatar">
+      <h3 class="name"><?php echo $current_user['nickname'] ?></h3>
     </div>
     <ul class="nav">
       <li <?php echo $current_page === 'index'? 'class="active"' : '';  ?>><a href="index1.php"><i class="fa fa-dashboard"></i>仪盘表</a></li>

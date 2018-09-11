@@ -1,3 +1,9 @@
+<?php 
+  require_once '../config.php';
+  require_once MY_DIR . '\function.php';
+
+  my_current_user();
+ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -35,8 +41,9 @@
             <input id="site_logo" name="site_logo" type="hidden">
             <label class="form-image">
               <input id="logo" type="file">
-              <img src="../static/uploads/avatar_2.jpg">
-              <i class="mask fa fa-upload"></i>
+              <input type="hidden" id="avatar" name="avatar" value="">
+              <img src="../static/uploads/avatar_2.jpg" width=100>
+              <i class="mask fa fa-upload" disable></i>
             </label>
           </div>
         </div>
@@ -83,6 +90,26 @@
 
   <script src="../static/assets/vendors/jquery/jquery.js"></script>
   <script src="../static//assets/vendors/bootstrap/js/bootstrap.js"></script>
+  <script>
+  $(function(){
+    $('#logo').on('change',function(){
+       var files = $(this).prop('files');
+       if(!files.length) return;
+       var file = files[0];
+       var data = new FormData();
+       data.append('logo',file);
+       var xhr = window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject('Microsoft XMLHTTP');
+       xhr.open('POST','/admin/api/upload.php');
+       xhr.send(data);
+       xhr.onreadystatechange = function (res) {
+          if(this.readyState!==4) return;
+          $('#logo').siblings('img').attr('src',this.responseText);
+          $('#avatar').val(this.responseText);
+       }
+     })
+  })
+
+  </script>
   <script>NProgress.done()</script>
 </body>
 </html>

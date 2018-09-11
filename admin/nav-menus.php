@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<?php 
+  require_once '../config.php';
+  require_once MY_DIR . '\function.php';
+
+  my_current_user();
+ ?><!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">

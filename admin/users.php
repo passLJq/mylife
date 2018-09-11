@@ -1,3 +1,10 @@
+<?php 
+  require_once '../config.php';
+  require_once MY_DIR . '\function.php';
+
+  my_current_user();
+  $users = my_fetch_all('select * from users');
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -30,7 +37,7 @@
       </div> -->
       <div class="row">
         <div class="col-md-4">
-          <form>
+          <form action="<?php $_SERVER['PHP_SELF']; ?>" method="post" >
             <h2>添加新用户</h2>
             <div class="form-group">
               <label for="email">邮箱</label>
@@ -40,6 +47,12 @@
               <label for="slug">别名</label>
               <input id="slug" class="form-control" name="slug" type="text" placeholder="slug">
               <p class="help-block">https://mylife/author/<strong>slug</strong></p>
+            </div>
+            <div class="form-group">
+              <label for="avatar">头像
+                <input id="avatar" class="form-control" name="avatar" type="file">
+                <img src="/static/uploads/avatar_2.jpg" width=100>
+              </label>
             </div>
             <div class="form-group">
               <label for="nickname">昵称</label>
@@ -72,42 +85,20 @@
               </tr>
             </thead>
             <tbody >
+              <?php foreach ($users as $item): ?>
               <tr>
-                <td class="text-center"><input type="checkbox"></td>
-                <td class="text-center"><img class="avatar" src="../static/uploads/avatar_1.jpg" ></td>
-                <td style="line-height:70px">mime@mylife.com</td>
-                <td style="line-height:70px">abc</td>
-                <td style="line-height:70px">abc</td>
-                <td style="line-height:70px">激活</td>
+                <td class="text-center"><input type="checkbox" value="<?php echo $item['id']; ?>"></td>
+                <td class="text-center"><img class="avatar" src="<?php echo $item['avatar']; ?>" ></td>
+                <td style="line-height:70px"><?php echo $item['email']; ?></td>
+                <td style="line-height:70px"><?php echo $item['slug']; ?></td>
+                <td style="line-height:70px"><?php echo $item['nickname']; ?></td>
+                <td style="line-height:70px"><?php echo $item['status']; ?></td>
                 <td class="text-center" style="padding-top:30px">
                   <a href="post-add.php" class="btn btn-default btn-xs">编辑</a>
                   <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
                 </td>
               </tr>
-              <tr>
-                <td class="text-center"><input type="checkbox"></td>
-                <td class="text-center"><img class="avatar" src="../static/uploads/avatar_1.jpg" ></td>
-                <td style="line-height:70px">mime@mylife.com</td>
-                <td style="line-height:70px">abc</td>
-                <td style="line-height:70px">abc</td>
-                <td style="line-height:70px">激活</td>
-                <td class="text-center" style="padding-top:30px">
-                  <a href="post-add.php" class="btn btn-default btn-xs">编辑</a>
-                  <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-                </td>
-              </tr>
-              <tr>
-                <td class="text-center"><input type="checkbox"></td>
-                <td class="text-center"><img class="avatar" src="../static/uploads/avatar_1.jpg" ></td>
-                <td style="line-height:70px">mime@mylife.com</td>
-                <td style="line-height:70px">abc</td>
-                <td style="line-height:70px">abc</td>
-                <td style="line-height:70px">激活</td>
-                <td class="text-center" style="padding-top:30px">
-                  <a href="post-add.php" class="btn btn-default btn-xs">编辑</a>
-                  <a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-                </td>
-              </tr>
+            <?php endforeach ?>
             </tbody>
           </table>
         </div>
@@ -120,6 +111,20 @@
 
   <script src="../static/assets/vendors/jquery/jquery.js"></script>
   <script src="../static//assets/vendors/bootstrap/js/bootstrap.js"></script>
+  <script>
+  $(function(){
+    $('#avatar').on('change',function(){
+      var file = $(this).prop('files')[0];
+      var data = new FormData();
+    })
+
+    /*$('#avatar').on('change',function(){
+       var files = $(this).prop('files');
+       console.log(files);
+     })*/
+
+  })
+  </script>
   <script>NProgress.done()</script>
 </body>
 </html>
